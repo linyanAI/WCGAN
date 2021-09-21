@@ -59,11 +59,10 @@ if __name__ == '__main__':
             output.backward()
             optimizer_D.step()
 
-            if i % 5 == 0:
-                Gen.zero_grad()
-                output1 = -Dis(Gen(noise).detach()).mean()
-                output1.backward()
-                optimizer_G.step()
+            Gen.zero_grad()
+            output1 = -Dis(Gen(noise).detach()).mean()
+            output1.backward()
+            optimizer_G.step()
 
             if i % 50 == 0:
                 print(f"epoch:{epoch}, i:{i}. Discriminar error:{output}, Generative error:{output1.cpu().item()}")
