@@ -18,6 +18,6 @@ if __name__ == '__main__':
             img = res[i][[2,1,0], :, :]
             img = img.permute(1,2,0)*255
             img = img.cpu().numpy().astype(np.uint8).copy()
-            cv2.imwrite(f'{i}.jpg', img)
+            cv2.imwrite(f'create/{i}.jpg', img)
 
 
